@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "1bcf2fd7-ce85-4beb-9cf9-9aa2ee07796f",
+		"name": "dpoint-graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2693645"
+	},
+	"item": [
+		{
+			"name": "fetch all movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/movie",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch all movies - graphql",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    fetchallMovie{\r\n        mid\r\n        movieName\r\n        leadActorName\r\n        imdbRating\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/graphql/",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch specific movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/movie/Inception",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie",
+						"Inception"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch specific movie Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    fetchSpecificMovie(moviename: \"The Shawshank Redemption\"){\r\n        mid\r\n        imdbRating\r\n        movieName\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"movieName\": \"The Shawshank Redemption\",\r\n        \"leadActorName\": \"Tim Robbins\",\r\n        \"producer\": \"Niki Marvin\",\r\n        \"imdbRating\": 9.3,\r\n        \"genre\": \"Drama\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/movie",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create movie -graphql",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n    createMovie(moviecreaterequest: {\r\n        movieName: \"The Shawshank Redemption\",\r\n        leadActorName: \"Tim Robbins\",\r\n        producer: \"Niki Marvin\",\r\n        imdbRating: 9.3,\r\n        Genre: \"Drama\"\r\n    }){\r\n        mid\r\n        leadActorName\r\n        movieName\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/graphql/",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

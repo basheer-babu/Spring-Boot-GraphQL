@@ -1,0 +1,24 @@
+type Mutation{
+    createMovie(moviecreaterequest:MovieCreateDto):Movie
+}
+type Query{
+    fetchallMovie:[Movie]
+    fetchSpecificMovie(moviename:String): Movie
+}
+
+type Movie{
+    mid:ID
+    movieName:String
+    leadActorName:String
+    Genre:String
+    producer:String
+    imdbRating:Float
+}
+
+input MovieCreateDto{
+    movieName:String
+    leadActorName:String
+    Genre:String
+    producer:String
+    imdbRating:Float
+}
